@@ -3,7 +3,8 @@ A framework for benchmarking clustering algorithms, using Pareto fronts to captu
 
 This code is related to the following manuscript, which has recently been accepted to Bioinformatics journal. DOI will be updated once manuscript is made available by the journal.
 
-> Givanna H. Putri, Irena Koprinska, Thomas M. Ashhurst, Nicholas J.C. King, Mark N. Read. Using single-cell cytometry to illustrate the generalisable unbiased evaluation of clustering algorithms using Pareto fronts. 
+> Givanna H. Putri, Irena Koprinska, Thomas M. Ashhurst, Nicholas J.C. King, Mark N. Read. Using single-cell cytometry to illustrate integrated
+multi-perspective evaluation of clustering algorithms using Pareto fronts. 
 
 ## Installation
 Make sure you have Python >= 3.6 installed.
