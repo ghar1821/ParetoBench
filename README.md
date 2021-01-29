@@ -1,10 +1,9 @@
 # ParetoBench
 A framework for benchmarking clustering algorithms, using Pareto fronts to capture tradeoffs in clustering performance as quantified through complementary use of several supervised clustering performance metrics. 
 
-This repository is related to the following manuscript, which has recently been accepted to Bioinformatics journal. DOI will be updated once manuscript is made available by the journal.
+This repository is related to the following manuscript, which has been accepted to Bioinformatics journal. If you use ParetoBench in your work, please kindly cite our publication:
 
-> Givanna H. Putri, Irena Koprinska, Thomas M. Ashhurst, Nicholas J.C. King, Mark N. Read. Using single-cell cytometry to illustrate integrated
-multi-perspective evaluation of clustering algorithms using Pareto fronts. 
+> Putri, G. H., Koprinska, I., Ashhurst, T. M., King, N. J. C., & Read, M. N. (2021). Using single-cell cytometry to illustrate integrated multi-perspective evaluation of clustering algorithms using Pareto fronts. Bioinformatics. https://doi.org/10.1093/bioinformatics/btab038
 
 ## Installation
 Make sure you have Python >= 3.6 installed.
