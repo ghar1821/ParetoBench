@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -P chronoclust
+#PBS -l select=1:ncpus=1:mem=4GB
+#PBS -l walltime=24:00:00
+#PBS -q defaultQ
+#PBS -e /project/chronoclust/lweber_dataset/clustering/Levine_13dim/lhc/clustering/0/pbs_logs
+#PBS -o /project/chronoclust/lweber_dataset/clustering/Levine_13dim/lhc/clustering/0/pbs_logs
+
+HOME=/project/chronoclust/lweber_dataset/clustering/Levine_13dim/lhc
+CONFIG=$HOME/configs/config_0.xml
+OUTDIR=$HOME/clustering/0
+INPUT=$HOME/input.xml
+GATING=/project/chronoclust/lweber_dataset/dataset/labelled/centroids/Levine_13dim.csv
+
+cd /project/chronoclust/code/phd-code/chronoclust
+
+/project/chronoclust/miniconda3/bin/python3 run_chronoclust.py -i $INPUT -c $CONFIG -o $OUTDIR -l $OUTDIR -g $GATING
+touch $OUTDIR/chronoclust.finished
+
+

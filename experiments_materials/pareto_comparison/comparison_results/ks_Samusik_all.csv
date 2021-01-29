@@ -1,0 +1,4 @@
+Algo1,Algo2,ks_dval,ks_pval,stat_sig(<0.005)
+phenograph,flowsom,0.21728359078985718,0.03357414029720751,False
+phenograph,chronoclust,0.8778082191780822,3.3306690738754696e-16,True
+flowsom,chronoclust,0.76,2.1379538309332183e-29,True
