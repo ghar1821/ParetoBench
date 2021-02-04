@@ -5,7 +5,7 @@ from collections import defaultdict
 import numpy as np
 import pandas as pd
 
-def tranform_scores_to_population(score_file, algorithm, dataset, measures_to_use):
+def tranform_scores_to_population(score_file, algorithm, dataset, measures_to_use, param_id_col):
     """
     Read the clustering quality score and transform them to unsga3 population for processing later.
 
@@ -23,6 +23,9 @@ def tranform_scores_to_population(score_file, algorithm, dataset, measures_to_us
     measures_to_use
         Array of metrics used to evaluate the quality of the clustering solutions. 
         The content of the array must match the columns in the score_file.
+
+    param_id_col
+        String indicating the column in the csv files denoting the unique ID of the solution.
 
     Return
     ------
@@ -49,14 +52,16 @@ def tranform_scores_to_population(score_file, algorithm, dataset, measures_to_us
     # original array contain 4 arrays, each array is all the clustering as evaluated by ONE metric.
     # we need to transpose it in such a way that each array is a clustering result as evaluate by all FOUR metrics.
     reciprocal_score_per_measure = np.transpose(np.array(reciprocal_score_per_measure))
-    original_score_per_measure = np.transpose(np.array(original_score_per_measure))    
+    original_score_per_measure = np.transpose(np.array(original_score_per_measure)) 
+
+    param_ids = df[param_id_col].to_numpy()   
 
     for i, c in enumerate(reciprocal_score_per_measure):
         fit = ParetoFitness(c)
         cand = Candidate(solution=[])
         cand.training_fitness = fit
         cand.activate_training_fitness()
-        cand.label = i
+        cand.label = param_ids[i]
         cand.original_score = original_score_per_measure[i]
         cand.algorithm = algorithm
         cand.dataset = dataset
@@ -65,7 +70,7 @@ def tranform_scores_to_population(score_file, algorithm, dataset, measures_to_us
     return population
 
 
-def find_pareto_per_dataset(datadir, datasets, algorithms, measures_to_use):
+def find_pareto_per_dataset(datadir, datasets, algorithms, measures_to_use, param_id_col):
     """
     Determine the front positions of each clustering solution.
 
@@ -92,6 +97,9 @@ def find_pareto_per_dataset(datadir, datasets, algorithms, measures_to_use):
     measures_to_use
         Array of metrics used to compare the quality of solutions.
 
+    param_id_col
+        String indicating the column in the csv files denoting the unique ID of the solution.
+
     
     Return
     ------
@@ -111,7 +119,8 @@ def find_pareto_per_dataset(datadir, datasets, algorithms, measures_to_use):
             population = tranform_scores_to_population(score_file=score_file,
                                                        algorithm=algorithm,
                                                        dataset=dataset,
-                                                       measures_to_use=measures_to_use)
+                                                       measures_to_use=measures_to_use,
+                                                       param_id_col=param_id_col)
 
             populations.extend(population)
 

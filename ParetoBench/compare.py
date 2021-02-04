@@ -6,7 +6,7 @@ import os
 import pandas as pd
 
 
-def compare(metrics, datasets, algorithms, datadir, savedir, front_limits = [0.1, 0.33]):
+def compare(metrics, datasets, algorithms, datadir, savedir, param_id_col, front_limits = [0.1, 0.33]):
     """
     Compare algorithms performance using Pareto front.
     For this to work, you need to have 1 csv file per algorithm per dataset. 
@@ -34,6 +34,10 @@ def compare(metrics, datasets, algorithms, datadir, savedir, front_limits = [0.1
         Array of name of algorithms to be compared
     datadir
         String showing the folder where the csv files containing quality of algorithm's solutions are stored.
+    savedir
+        String showing the folder where the results will be stored
+    param_id_col
+        String indicating the column in the csv files denoting the unique ID of the solution. MUST BE THE SAME for all csv files!
     front_limits
         The Pareto front ranks limits to report in summary. Used to compare how easy to tune an algorithm is.
         Default to [0.1, 0.33].
@@ -47,7 +51,7 @@ def compare(metrics, datasets, algorithms, datadir, savedir, front_limits = [0.1
 
     create_dir(savedir)
 
-    pareto_per_dataset = find_pareto_per_dataset(datadir, datasets, algorithms, metrics)
+    pareto_per_dataset = find_pareto_per_dataset(datadir, datasets, algorithms, metrics, param_id_col)
 
     pareto_all_datasets = []
 

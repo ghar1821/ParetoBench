@@ -1,2 +1,6 @@
-
 .DS_Store
+build/*
+dist/*
+ParetoBench.egg-info/*
+
+examples/.ipynb_checkpoints/tutorial_run_ParetoBench-checkpoint.ipynb
