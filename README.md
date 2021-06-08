@@ -21,7 +21,13 @@ Examples folder contains Jupyter notebook showing a step by step instruction on 
 
 
 ## Scripts to reproduce result in manuscript
-Folder `experiments_materials` contains all the scripts, datasets, and results used to reproduce all the plots and tables in the manuscript. 
+Folder `experiments_materials` contains all the scripts and results used to reproduce all the plots and tables in the manuscript. 
+
+Update 2021-06-09: the dataset previously stored in the `experiments_materials/dataset` folder has been migrated out to the Open Science Framework portal. 
+This is to ensure that the size of the Github repository is kept to the minimum. 
+All the non-script files in the `experiments_materials` folder will be gradually moved into the Open Science Framework portal.
+Please visit the portal to download the datasets: https://osf.io/rjhg6/
+
 
 ## Acknowledgements
 
